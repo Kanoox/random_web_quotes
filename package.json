@@ -1,0 +1,19 @@
+{
+  "name": "random_web_quotes",
+  "version": "1.0.0",
+  "description": "random quote generator",
+  "keywords": [
+    "web"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kanoox"
+  },
+  "license": "ISC",
+  "author": "Kanoox",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
