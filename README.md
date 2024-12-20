@@ -3,12 +3,6 @@
 
 This is a web quote generator made with ExpressJS, HTML, CSS very classic to learn how to manage data in json. It’s a simple test I’ll do some more.
 
-
-## Authors
-
-- [@Kanoox](https://www.github.com/Kanoox)
-
-
 ## Deployment
 
 To deploy this project copy the code into a folder.
@@ -28,3 +22,6 @@ To deploy this project copy the code into a folder.
   npm start
 ```
 
+## Authors
+
+- [@Kanoox](https://www.github.com/Kanoox)
