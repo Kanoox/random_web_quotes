@@ -1,7 +1,7 @@
 function getcitation(){
     const my_quotes = document.getElementById("quotes");
     
-    fetch('quotes.json')
+    fetch('/quotes')
         .then(response => response.json())
         .then(data => {
             my_quotes.textContent = get_random_quote(data.citations);
@@ -9,7 +9,6 @@ function getcitation(){
         })
         .catch(error => console.error('Error fetching the JSON:', error));
 }
-
 
 function get_random_quote(quotes){
     // Vérification du tableau
@@ -26,4 +25,20 @@ function get_random_quote(quotes){
 
 
     return random_quote;
+}
+
+function addcitation(){
+    const new_quote = {
+        texte: prompt("Entrez la citation"),
+        auteur: prompt("Entrez l'auteur")
+    };
+    
+    fetch('/addquote', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(new_quote),
+    })
+        .catch(error => console.error('Error fetching the JSON:', error));
 }
