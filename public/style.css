@@ -1,0 +1,48 @@
+body, html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Tangerine', serif;
+    font-size: 22px;
+    background-color: #f4f4f4;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+}
+
+.test {
+    display: flex;
+    flex-direction:column; /* Positionne les éléments en colonne */
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
+    height: 80vh;
+    border-radius: 8px; /* Coins arrondis */
+}
+
+.btn {
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(211, 211, 211);
+    color: black; /* Couleur du texte */
+    border: none; /* Supprime la bordure */
+    padding: 8px 16px; /* Espace interne */
+    font-size: 14px; /* Taille du texte */
+    border-radius: 6px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointer */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    font-family: "Roboto", sans-serif;
+    background-color: rgba(211, 211, 211, 1);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    transform: scale(1.07); /* Légère agrandissement */
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.element {
+    color: black;
+    margin: 10px 0; /* Espacement externe entre les éléments */
+}
