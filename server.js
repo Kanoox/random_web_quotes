@@ -3,57 +3,27 @@ const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const app = express();
 const PORT = 3000;
 
-const server = http.createServer((req, res) => {
-  let filePath = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
+app.use(bodyParser.json());
 
-  // Extension du fichier
-  const ext = path.extname(filePath);
-  let contentType = 'text/html';
+app.post('/addquote', (req, res) => {
+    const newQuote = req.body;
 
-  // Définir le content type selon l'extension
-  switch (ext) {
-    case '.css':
-      contentType = 'text/css';
-      break;
-    case '.js':
-      contentType = 'application/javascript';
-      break;
-    case '.png':
-      contentType = 'image/png';
-      break;
-    case '.jpg':
-    case '.jpeg':
-      contentType = 'image/jpeg';
-      break;
-    case '.svg':
-      contentType = 'image/svg+xml';
-      break;
-    default:
-      contentType = 'text/html';
-  }
+    fs.readFile('quotes.json', (err, data) => {
+        if (err) throw err;
 
-  // Lire le fichier et le retourner au client
-  fs.readFile(filePath, (err, content) => {
-    if (err) {
-      if (err.code === 'ENOENT') {
-        // Page 404 si le fichier n'existe pas
-        fs.readFile(path.join(__dirname, 'public', '404.html'), (err, content) => {
-          res.writeHead(404, { 'Content-Type': 'text/html' });
-          res.end(content, 'utf8');
+        let quotes = JSON.parse(data);
+        quotes.citations.push(newQuote);
+
+        fs.writeFile('quotes.json', JSON.stringify(quotes, null, 2), (err) => {
+            if (err) throw err;
+            res.send('Quote added successfully');
         });
-      } else {
-        // Erreur serveur
-        res.writeHead(500);
-        res.end(`Server Error: ${err.code}`);
-      }
-    } else {
-      // Succès : retourner le contenu du fichier
-      res.writeHead(200, { 'Content-Type': contentType });
-      res.end(content, 'utf8');
-    }
-  });
+    });
 });
 
-server.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`);
+});
