@@ -1,4 +1,4 @@
-function test(){
+function getcitation(){
     const my_quotes = document.getElementById("quotes");
     
     fetch('quotes.json')
