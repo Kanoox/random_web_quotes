@@ -3,7 +3,16 @@ const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const bodyParser = require('body-parser');
+const csrf = require('csurf');
+const express = require('express');
+
 const app = express();
+const csrfProtection = csrf({ cookie: true });
+const PORT = 3000;
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(csrfProtection);
 const PORT = 3000;
 
 app.use(bodyParser.json());
